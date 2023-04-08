@@ -12,6 +12,7 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ['new_building', 'has_balcony', 'rooms_number']
     search_fields = ['town', 'owner', 'address']
     readonly_fields = ['created_at']
+    raw_id_fields = ('liked_by',)
 
     class Meta:
         model = Flat
