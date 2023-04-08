@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Flat
+from .models import Flat, Complaint
 
 
 @admin.register(Flat)
-class FlatAdmin (admin.ModelAdmin):
+class FlatAdmin(admin.ModelAdmin):
     list_display = ['town', 'owner', 'address',
                     'new_building', 'price',
                     'construction_year']
@@ -15,4 +15,10 @@ class FlatAdmin (admin.ModelAdmin):
 
     class Meta:
         model = Flat
+
+
+@admin.register(Complaint)
+class ComplaintAdmin(admin.ModelAdmin):
+    raw_id_fields = ('user', 'complaint_the_apartment')
+    list_display = ['user', 'complaint_the_apartment']
 
