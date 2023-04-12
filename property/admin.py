@@ -7,10 +7,11 @@ from .models import Flat, Complaint
 class FlatAdmin(admin.ModelAdmin):
     list_display = ['town', 'owner', 'address',
                     'new_building', 'price',
-                    'construction_year']
+                    'construction_year',
+                    'owner_pure_phone']
     list_editable = ['new_building', 'price']
     list_filter = ['new_building', 'has_balcony', 'rooms_number']
-    search_fields = ['town', 'owner', 'address']
+    search_fields = ['town', 'owner', 'address', 'owner_pure_phone']
     readonly_fields = ['created_at']
     raw_id_fields = ('liked_by',)
 
