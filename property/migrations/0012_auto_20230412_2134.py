@@ -14,7 +14,7 @@ def copy_flat_to_owners(apps, schema_editor):
                                                        number=flat.owners_phonenumber,
                                                        pure_phone=flat.owner_pure_phone,
                                                        )
-            obj.apartment.add(flat)
+            obj.apartments.add(flat)
 
 
 class Migration(migrations.Migration):
