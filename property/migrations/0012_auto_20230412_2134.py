@@ -8,11 +8,11 @@ def copy_flat_to_owners(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     try:
         for flat in Flat.objects.all():
-            obj, created = Owner.objects.get_or_create(owner=flat.owner,
-                                                       owners_phonenumber=flat.owners_phonenumber,
-                                                       owner_pure_phone=flat.owner_pure_phone,
+            obj, created = Owner.objects.get_or_create(full_name=flat.owner,
+                                                       number=flat.owners_phonenumber,
+                                                       pure_phone=flat.owner_pure_phone,
                                                        )
-            obj.apartments_in_the_property.add(flat)
+            obj.apartment.add(flat)
     except IntegrityError:
         pass
 
