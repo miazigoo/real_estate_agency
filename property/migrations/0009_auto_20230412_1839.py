@@ -12,9 +12,10 @@ def create_owner_pure_phone(apps, schema_editor):
             if not flat.owners_phonenumber:
                 continue
             number = phonenumbers.parse(flat.owners_phonenumber, 'RU')
+            number_e164_f = phonenumbers.format_number(number, phonenumbers.PhoneNumberFormat.E164)
             if not phonenumbers.is_valid_number(number):
                 continue
-            flat.owner_pure_phone = f'+{number.country_code}{number.national_number}'
+            flat.owner_pure_phone = number_e164_f
             flat.save()
         except NumberParseException:
             continue
