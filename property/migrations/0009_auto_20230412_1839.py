@@ -7,7 +7,8 @@ from phonenumbers import NumberParseException
 
 def create_owner_pure_phone(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    all_flat = Flat.objects.all()
+    for flat in all_flat.iterator():
         try:
             if not flat.owners_phonenumber:
                 continue
@@ -23,7 +24,8 @@ def create_owner_pure_phone(apps, schema_editor):
 
 def move_backward(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    for flat in Flat.objects.all():
+    all_flat = Flat.objects.all()
+    for flat in all_flat.iterator():
         flat.owner_pure_phone = None
         flat.save()
 

@@ -6,8 +6,9 @@ from django.db import migrations, IntegrityError
 def copy_flat_to_owners(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     Flat = apps.get_model('property', 'Flat')
+    all_flat = Flat.objects.all()
     try:
-        for flat in Flat.objects.all():
+        for flat in all_flat.iterator():
             obj, created = Owner.objects.get_or_create(full_name=flat.owner,
                                                        number=flat.owners_phonenumber,
                                                        pure_phone=flat.owner_pure_phone,
