@@ -60,7 +60,7 @@ class Complaint(models.Model):
     user = models.ForeignKey(User, unique=True,
                              on_delete=models.CASCADE,
                              verbose_name='Кто жаловался:',
-                             related_name='user_complaints')
+                             related_name='users_who_complained')
     apartment = models.ForeignKey(
         Flat, on_delete=models.CASCADE,
         verbose_name='Квартира, на которую жалуются:',
